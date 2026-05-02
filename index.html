@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Admin | Colaba Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- 🏛️ ROYAL THEME VARIABLES --- */
+        :root {
+            --bg-deep: #080B10; --bg-surface: #111620; --text-ivory: #EAE0D5;
+            --text-mute: #B49B74; --gold-rich: #CBA155;
+            --gold-liquid: linear-gradient(135deg, #AA823C 0%, #CBA155 50%, #AA823C 100%);
+            --red-danger: #cf4444; --border: rgba(203, 161, 85, 0.3);
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Josefin Sans', sans-serif; background-color: var(--bg-deep); color: var(--text-ivory); margin: 0; padding: 20px; }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        .brand { font-family: 'Cinzel Decorative', cursive; font-size: 24px; color: var(--gold-rich); text-transform: uppercase; margin: 0; }
+        .subtitle { color: var(--text-mute); font-size: 13px; margin-top: 5px; }
+        .box { background: var(--bg-surface); border: 1px solid var(--border); padding: 25px; border-radius: 16px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { margin-top: 0; color: var(--gold-rich); font-family: 'Cinzel Decorative', cursive; font-size: 18px; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
+        label { display: block; font-size: 12px; font-weight: 700; color: var(--text-mute); margin-top: 15px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        input, select { width: 100%; padding: 14px; background: rgba(8, 11, 16, 0.6); border: 1px solid var(--border); border-radius: 8px; color: var(--text-ivory); font-size: 15px; outline: none; transition: 0.3s; font-family: 'Josefin Sans', sans-serif; }
+        input:focus, select:focus { border-color: var(--gold-rich); background: #080B10; }
+        input[type="file"] { padding: 10px; color: var(--text-mute); cursor: pointer; }
+        input[type="file"]::file-selector-button { background: var(--gold-rich); color: #080B10; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 700; margin-right: 15px; cursor: pointer; font-family: 'Josefin Sans', sans-serif; transition: 0.2s; }
+        .btn-add { width: 100%; padding: 15px; margin-top: 25px; background: var(--gold-liquid); color: #080B10; border: none; border-radius: 8px; font-weight: 800; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(170, 130, 60, 0.3); transition: 0.3s; }
+        .btn-add:active { transform: scale(0.98); }
+        .btn-add:disabled { background: #555; cursor: not-allowed; color: #aaa; box-shadow: none; }
+        .stats { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; }
+        .stat-box { font-size: 14px; color: var(--text-mute); }
+        .stat-num { color: var(--gold-rich); font-weight: bold; font-size: 16px; }
+        .search-bar { margin-bottom: 15px; }
+        .product-item { display: flex; align-items: center; justify-content: space-between; background: rgba(8, 11, 16, 0.4); border: 1px solid rgba(203, 161, 85, 0.1); padding: 12px; margin-bottom: 10px; border-radius: 10px; }
+        .p-left { display: flex; align-items: center; gap: 12px; }
+        .p-img { width: 45px; height: 45px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border); }
+        .p-details div { font-size: 14px; font-weight: 600; color: var(--text-ivory); }
+        .p-details small { font-size: 12px; color: var(--text-mute); }
+        .btn-del { background: transparent; border: 1px solid var(--red-danger); color: var(--red-danger); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
+        .btn-del:active { background: var(--red-danger); color: white; }
+        #loading { text-align: center; color: var(--text-mute); padding: 20px; font-style: italic; }
+        #statusText { text-align: center; color: var(--gold-light); font-size: 13px; margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="brand">Admin Command</h1>
+        <div class="subtitle">Manage The Colaba Store</div>
+    </div>
+
+    <div class="box">
+        <h2>⚜️ Add New Creation</h2>
+        <label>Product Name</label><input type="text" id="pName" placeholder="Ex: Royal Watch">
+        <label>Selling Price (₹)</label><input type="number" id="pPrice" placeholder="Ex: 999">
+        <label>MRP / Old Price (₹)</label><input type="number" id="pOldPrice" placeholder="Ex: 2500">
+        <label>Product Photo</label><input type="file" id="pFile" accept="image/*">
+        <label>Category</label>
+        <select id="pCat">
+            <option value="shoes">Shoes (Footwear)</option>
+            <option value="mens">Mens Collection</option>
+            <option value="ladies">Ladies Collection</option>
+            <option value="watch">Watch (Timepieces)</option>
+            <option value="gadget">Gadget (Tech)</option>
+            <option value="fashion">Fashion (Atelier)</option>
+            <option value="other">Other</option>
+        </select>
+        <button class="btn-add" id="uploadBtn" onclick="compressAndUpload()">Upload Product 🚀</button>
+        <p id="statusText"></p>
+    </div>
+
+    <div class="box">
+        <div class="stats">
+            <h2>📦 Inventory</h2>
+            <div class="stat-box">Total: <span id="totalCount" class="stat-num">0</span></div>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchAdmin" placeholder="🔍 Search by name..." onkeyup="filterProducts()">
+        </div>
+        <div id="productList">
+            <div id="loading">Loading from Vault...</div>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwBXxw_RhA9crHbxy2JbF8GiBivt82pgqpIN2sO1EkCU0WuKVw51mGnB9-g7ZcIQwnP/exec';
+        let allProducts = [];
+
+        window.onload = loadProducts;
+
+        function compressAndUpload() {
+            const name = document.getElementById('pName').value.trim();
+            const price = document.getElementById('pPrice').value.trim();
+            const oldPrice = document.getElementById('pOldPrice').value.trim();
+            const cat = document.getElementById('pCat').value;
+            const fileInput = document.getElementById('pFile');
+            const btn = document.getElementById('uploadBtn');
+            const status = document.getElementById('statusText');
+
+            if(!name || !price || fileInput.files.length === 0) return alert("⚠️ Please fill Details & Select an Image!");
+
+            btn.disabled = true;
+            btn.innerHTML = "Processing Image... ⚙️";
+            status.innerText = "Compressing for fast loading...";
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const img = new Image();
+                img.src = event.target.result;
+                
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    const MAX_WIDTH = 800; 
+                    const scaleSize = MAX_WIDTH / img.width;
+                    
+                    if (img.width > MAX_WIDTH) {
+                        canvas.width = MAX_WIDTH;
+                        canvas.height = img.height * scaleSize;
+                    } else {
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                    }
+
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    const base64Img = canvas.toDataURL('image/jpeg', 0.8);
+                    saveToGoogle(name, price, oldPrice, cat, base64Img);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveToGoogle(name, price, oldPrice, cat, base64Img) {
+            const btn = document.getElementById('uploadBtn');
+            const status = document.getElementById('statusText');
+            btn.innerHTML = "Uploading to Database... 🚀";
+            status.innerText = "Saving to Google Drive & Sheets...";
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify({ action: "add", name: name, price: price, originalPrice: oldPrice || price, category: cat, image: base64Img })
+            })
+            .then(r => r.json())
+            .then(d => {
+                status.innerText = "✅ Product Live Successfully!";
+                setTimeout(() => status.innerText = "", 3000);
+                document.getElementById('pName').value = ""; document.getElementById('pPrice').value = "";
+                document.getElementById('pOldPrice').value = ""; document.getElementById('pFile').value = "";
+                btn.disabled = false; btn.innerHTML = "Upload Product 🚀";
+                loadProducts();
+            }).catch(e => {
+                status.innerText = "Upload Failed ❌"; btn.disabled = false; btn.innerHTML = "Try Again";
+            });
+        }
+
+        function loadProducts() {
+            const listDiv = document.getElementById('productList');
+            fetch(scriptURL).then(r => r.json()).then(data => {
+                listDiv.innerHTML = "";
+                if(data.length > 0) {
+                    allProducts = data.reverse();
+                    document.getElementById('totalCount').innerText = allProducts.length;
+                    renderList(allProducts);
+                } else {
+                    listDiv.innerHTML = "<p style='text-align:center; color:#888'>Inventory is empty.</p>";
+                    document.getElementById('totalCount').innerText = "0";
+                }
+            }).catch(e => listDiv.innerHTML = "<p style='text-align:center; color:var(--red-danger)'>Failed to load data.</p>");
+        }
+
+        function renderList(list) {
+            const listDiv = document.getElementById('productList');
+            listDiv.innerHTML = "";
+            list.forEach(item => {
+                listDiv.innerHTML += `
+                    <div class="product-item">
+                        <div class="p-left">
+                            <img src="${item.image}" class="p-img" onerror="this.src='https://via.placeholder.com/50'">
+                            <div class="p-details">
+                                <div>${item.name}</div>
+                                <small>${item.category.toUpperCase()} • ₹${item.price}</small>
+                            </div>
+                        </div>
+                        <button class="btn-del" onclick="deleteProduct(${item.id}, '${item.name}')">REMOVE</button>
+                    </div>`;
+            });
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('searchAdmin').value.toLowerCase();
+            renderList(allProducts.filter(item => item.name.toLowerCase().includes(query)));
+        }
+
+        function deleteProduct(id, name) {
+            if(!confirm(`⚠️ Delete "${name}" permanently?`)) return;
+            fetch(scriptURL, { method: 'POST', body: JSON.stringify({ action: "delete", id: id }) })
+            .then(() => loadProducts());
+        }
+    </script>
+</body>
+</html>
