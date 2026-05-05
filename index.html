@@ -3,171 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Admin Panel | Colaba Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <meta name="google-site-verification" content="87zIiOu8V4ybkIjdxacQm0x9CX2RwrOvYJRU8v_ZYp4" />
+    
+    <meta name="description" content="Discover The Colaba Store in Nagpur. Shop our Royal Edition collection of premium shoes, men's and ladies' fashion, watches, and tech gadgets." />
+    <meta name="keywords" content="colaba store, colaba store nagpur, the colaba store, luxury fashion nagpur, premium shoes nagpur, royal edition clothing, colaba store online" />
+    
+    <meta property="og:site_name" content="Colaba Store" />
+    <meta property="og:title" content="The Colaba Store | Royal Edition" />
+    <meta property="og:description" content="Shop at The Colaba Store Nagpur for premium luxury items, fashion, and gadgets." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://the-colaba-store.vercel.app/1000017941.png" />
+    
+    <link rel="icon" href="favicon.png" type="image/png" />
+
+    <title>The Colaba Store | Royal Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #080B10; --bg-surface: #111620;
-            --text-ivory: #EAE0D5; --text-gold-mute: #B49B74; 
-            --gold-rich: #CBA155; --gold-light: #FBD28B;
-            --danger: #ff4757; --success: #2ed573;
+            --bg-deep: #080B10; --bg-surface: #111620; --bg-glass: rgba(17, 22, 32, 0.85);
+            --text-ivory: #EAE0D5; --text-gold-mute: #B49B74; --gold-rich: #CBA155;
+            --gold-light: #FBD28B; --gold-dark: #AA823C;
+            --gold-liquid: linear-gradient(135deg, #AA823C 0%, #CBA155 50%, #AA823C 100%);
+            --gold-shine: linear-gradient(45deg, #AA823C, #FBD28B, #AA823C);
+            --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.5);
+            --shadow-deep: 0 20px 40px -15px rgba(0,0,0,0.7);
+            --gold-glow: 0 0 20px rgba(203, 161, 85, 0.2);
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Josefin Sans', sans-serif; background: var(--bg-deep); color: var(--text-ivory); margin: 0; padding-bottom: 50px; }
+        body { font-family: 'Josefin Sans', sans-serif; background-color: var(--bg-deep); background-image: linear-gradient(rgba(8,11,16,0.97), rgba(8,11,16,0.97)), url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23CBA155' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); color: var(--text-ivory); margin: 0; padding-bottom: 120px; letter-spacing: 0.3px; }
+        .header { padding: 18px 25px; background: var(--bg-glass); backdrop-filter: blur(30px) saturate(180%); -webkit-backdrop-filter: blur(30px) saturate(180%); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(203, 161, 85, 0.3); display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-soft); }
+        .brand { font-family: 'Cinzel Decorative', cursive; font-size: 22px; font-weight: 900; background: var(--gold-shine); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; letter-spacing: 1px; }
+        .banner-container { padding: 25px 20px; }
+        .banner { width: 100%; height: 220px; background-image: url('https://images.unsplash.com/photo-1550332781-0891793997a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center; border-radius: 16px; display: flex; align-items: flex-end; padding: 30px; position: relative; overflow: hidden; border: 1px solid rgba(203, 161, 85, 0.4); box-shadow: var(--shadow-deep); }
+        .banner::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, #080B10 10%, transparent 80%); }
+        .banner-box { position: relative; z-index: 2; padding:0; border:none; background:none; text-align: left; }
+        .banner h2 { font-family: 'Cinzel Decorative', cursive; margin: 0; font-size: 28px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .banner p { margin: 8px 0 0; font-size: 14px; color: var(--text-ivory); font-weight: 600; opacity: 0.9; letter-spacing: 0.5px; }
+        .search-box { padding: 0 20px 15px; }
+        .search-input { width: 100%; background: rgba(17, 22, 32, 0.6); border: 1px solid rgba(203, 161, 85, 0.3); padding: 16px 20px; border-radius: 12px; color: var(--text-ivory); font-family: inherit; font-size: 15px; outline: none; transition: 0.3s; backdrop-filter: blur(10px); }
+        .search-input:focus { border-color: var(--gold-rich); background: var(--bg-surface); }
+        .cat-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 5px 20px 25px; scrollbar-width: none; }
+        .chip { background: rgba(17, 22, 32, 0.5); color: var(--gold-rich); padding: 10px 24px; border-radius: 50px; font-size: 12px; font-weight: 700; white-space: nowrap; border: 1px solid rgba(203, 161, 85, 0.5); transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .chip.active { background: var(--gold-liquid); color: #080B10; border-color: transparent; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(203, 161, 85, 0.4); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 20px; }
+        .card { background: var(--bg-surface); border-radius: 16px; overflow: hidden; border: 1px solid rgba(203, 161, 85, 0.2); position: relative; transition: transform 0.2s; box-shadow: var(--shadow-soft); }
+        .card:hover { border-color: var(--gold-rich); transform: translateY(-5px); box-shadow: var(--gold-glow); }
+        .img-box { width: 100%; height: 170px; overflow: hidden; background: #05070a; position: relative; border-bottom: 1px solid rgba(203, 161, 85, 0.1); }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+        .info { padding: 15px; position: relative; z-index: 2; text-align: left; }
+        .name { font-family: 'Cinzel Decorative', cursive; font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text-ivory); height: 36px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; letter-spacing: 0.5px; }
+        .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 15px; justify-content: flex-start; }
+        .curr-price { font-size: 18px; font-weight: 800; color: var(--gold-rich); }
+        .old-price { font-size: 12px; text-decoration: line-through; color: var(--text-gold-mute); opacity: 0.8; }
+        .btn-add { width: 100%; background: var(--gold-liquid); color: #080B10; border: none; padding: 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; transition: 0.2s; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(170, 130, 60, 0.3); }
+        .stepper { display: flex; justify-content: space-between; align-items: center; background: rgba(8, 11, 16, 0.5); border-radius: 8px; padding: 4px; border: 1px solid var(--gold-dark); }
+        .step-btn { background: var(--gold-liquid); border: none; color: #080B10; width: 32px; height: 32px; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        .step-count { color: var(--text-ivory); }
+        .badge-off { position: absolute; top: 10px; left: 10px; background: var(--gold-rich); color: #080B10; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 4px; z-index: 10; letter-spacing: 1px; }
+        .footer { margin-top: 60px; padding: 50px 25px 150px; background: #05070A; border-top: 3px solid var(--gold-dark); text-align: center; position: relative; }
+        .footer::before { content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); width: 100px; height: 30px; background: var(--gold-liquid); clip-path: polygon(0 0, 100% 0, 50% 100%); }
+        .f-brand { font-family: 'Cinzel Decorative', cursive; font-size: 26px; color: var(--gold-rich); margin-bottom: 15px; font-style: normal; }
+        .contact-box { background: rgba(17, 22, 32, 0.8); border: 1px solid var(--gold-rich); padding: 25px; border-radius: 16px; margin-bottom: 30px; text-align: left; display: block; width: auto; max-width: none; line-height: 1.4; }
+        .bottom-bar { position: fixed; bottom: 25px; left: 20px; right: 20px; background: rgba(17, 22, 32, 0.95); backdrop-filter: blur(20px); padding: 15px 25px; border-radius: 12px; border: 1px solid var(--gold-rich); display: none; justify-content: space-between; align-items: center; box-shadow: 0 15px 40px rgba(0,0,0,0.6), var(--gold-glow); z-index: 999; cursor: pointer; animation: floatUp 0.4s ease; }
+        @keyframes floatUp { from { transform: translateY(100px); } to { transform: translateY(0); } }
+        .view-cart-btn { background: var(--gold-liquid); color: #080B10; padding: 10px 24px; border-radius: 6px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; display: none; backdrop-filter: blur(5px); }
+        .drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-surface); border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 30px; z-index: 1001; transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.2, 1); border-top: 4px solid var(--gold-rich); max-height: 85vh; overflow-y: auto; }
+        .drawer.open { transform: translateY(0); }
+        .modal-overlay.open { display: block; }
+        .wa-checkout { display: block; background: var(--gold-liquid); color: #080B10; text-align: center; padding: 18px; border-radius: 10px; text-decoration: none; font-weight: 800; margin-top: 30px; font-size: 15px; text-transform: uppercase; letter-spacing: 2px; border: none; width: 100%; cursor: pointer; }
+        .cart-list-item { display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(203, 161, 85, 0.2); align-items: center; }
+        .header a { color: var(--gold-rich); font-size: 24px; text-decoration: none; }
         
-        .header { background: var(--bg-surface); padding: 15px; text-align: center; border-bottom: 2px solid var(--gold-rich); position: sticky; top: 0; z-index: 100; }
-        .header h1 { font-family: 'Cinzel Decorative', cursive; color: var(--gold-light); margin: 0 0 15px 0; font-size: 22px; }
-        .tab-container { display: flex; gap: 8px; justify-content: center; }
-        .tab-btn { flex: 1; padding: 10px 5px; background: transparent; border: 1px solid var(--gold-rich); color: var(--gold-light); border-radius: 8px; font-weight: bold; font-family: inherit; font-size: 14px; cursor: pointer; transition: 0.3s; }
-        .tab-btn.active { background: var(--gold-rich); color: #000; }
+        .checkout-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background: rgba(0, 0, 0, 0.85); z-index: 3000; align-items: flex-end; justify-content: center; backdrop-filter: blur(8px); transition: opacity 0.3s ease; }
+        @media (min-width: 768px) { .checkout-overlay { align-items: center; } }
+        .checkout-container { background: var(--bg-surface); width: 100%; max-width: 520px; height: 90vh; border-radius: 24px 24px 0 0; border-top: 4px solid var(--gold-rich); box-shadow: 0 -10px 40px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; color: var(--text-ivory); }
+        @media (min-width: 768px) { .checkout-container { height: auto; max-height: 85vh; border-radius: 24px; animation: popIn 0.3s; } }
+        .checkout-header { background: var(--bg-deep); border-bottom: 1px solid rgba(203, 161, 85, 0.3); padding: 20px 25px; border-radius: 20px 20px 0 0; display: flex; justify-content: space-between; align-items: center; }
+        .checkout-title { font-family: 'Cinzel Decorative', cursive; font-size: 1.3rem; color: var(--gold-rich); margin: 0; }
+        .checkout-close { background: transparent; border: 1px solid var(--gold-rich); color: var(--gold-rich); width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .checkout-body { padding: 25px; padding-bottom: 100px; overflow-y: auto; flex-grow: 1; }
+        .checkout-step { display: none; animation: fadeIn 0.3s; }
+        .checkout-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .step-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 20px; color: var(--gold-light); display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(203, 161, 85, 0.2); }
+        .step-title .step-number { background: var(--gold-liquid); color: #080B10; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: bold; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-gold-mute); margin-bottom: 8px; }
+        .form-input { width: 100%; padding: 14px 16px; border: 1px solid rgba(203, 161, 85, 0.3); border-radius: 12px; font-size: 1rem; background: rgba(17, 22, 32, 0.6); color: var(--text-ivory); font-family: inherit; transition: all 0.2s; }
+        .form-input:focus { outline: none; border-color: var(--gold-rich); background: var(--bg-deep); }
+        .address-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .payment-options { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        .payment-option { border: 1px solid var(--gold-rich); border-radius: 16px; padding: 18px; display: flex; align-items: center; gap: 15px; background: rgba(203, 161, 85, 0.1); }
+        .payment-radio { width: 22px; height: 22px; accent-color: var(--gold-rich); }
+        .payment-icon { font-size: 1.6rem; width: 48px; height: 48px; background: var(--bg-surface); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(203,161,85,0.2); }
+        .payment-title { font-weight: 700; font-size: 1rem; color: var(--text-ivory); }
+        .payment-desc { font-size: 0.8rem; color: var(--text-gold-mute); margin-top: 3px; }
+        .upi-details { margin-top: 25px; display: block; animation: fadeIn 0.4s; }
+        .upi-intent-box { background: var(--bg-deep); border: 1px solid rgba(203, 161, 85, 0.2); border-radius: 16px; padding: 25px 20px; text-align: center; }
+        .intent-msg { font-size: 1.1rem; font-weight: 700; color: var(--gold-light); margin-bottom: 5px; }
         
-        .section { display: none; padding: 20px; animation: fadeIn 0.4s; }
-        .section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .card-box { background: var(--bg-surface); padding: 20px; border-radius: 16px; border: 1px solid rgba(203, 161, 85, 0.3); margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; color: var(--gold-light); font-weight: 600; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--gold-rich); color: white; border-radius: 8px; font-family: inherit; }
-        .form-group input[type="file"] { padding: 9px; background: rgba(203, 161, 85, 0.1); border: 1px dashed var(--gold-rich); }
-        .btn-submit { width: 100%; padding: 15px; background: var(--gold-rich); color: #000; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; text-transform: uppercase; }
-        
-        .list-grid { display: grid; gap: 15px; }
-        .item-card { background: rgba(17, 22, 32, 0.8); border: 1px solid rgba(203, 161, 85, 0.3); border-radius: 12px; padding: 15px; }
-        
-        .prod-header { display: flex; gap: 15px; margin-bottom: 10px; }
-        .prod-img { width: 60px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid var(--gold-rich); background: #000; }
-        
-        .order-id { font-weight: 800; color: var(--gold-light); font-size: 18px; margin-bottom: 5px; border-bottom: 1px dashed var(--gold-rich); padding-bottom: 5px; }
-        .order-detail { font-size: 14px; margin-bottom: 4px; color: #ddd; }
-        .order-detail span { color: var(--text-gold-mute); }
-        .ss-btn { display: inline-block; background: #3498db; color: white; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; margin-top: 10px; }
-        
-        .action-row { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-del { flex: 1; background: transparent; border: 1px solid var(--danger); color: var(--danger); padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
-        .btn-confirm { flex: 1; background: var(--success); border: none; color: #000; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
-
-        .loader { text-align: center; color: var(--gold-light); font-weight: bold; margin: 20px 0; display: none; }
-        .refresh-btn { width: 100%; padding: 12px; background: var(--bg-surface); color: var(--gold-rich); border: 1px solid var(--gold-rich); border-radius: 8px; margin-bottom: 15px; font-weight: bold; cursor: pointer; }
+        .order-summary { background: var(--bg-deep); border-radius: 16px; padding: 20px; margin-top: 25px; border: 1px solid rgba(203, 161, 85, 0.2); }
+        .summary-title { font-weight: 800; font-size: 1rem; margin-bottom: 12px; color: var(--gold-light); text-transform: uppercase; }
+        .summary-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.95rem; border-bottom: 1px dashed rgba(203, 161, 85, 0.3); color: var(--text-ivory); }
+        .summary-row:last-child { border-bottom: none; font-weight: 800; font-size: 1.2rem; color: var(--gold-rich); padding-top: 15px; }
+        .checkout-footer { background: var(--bg-surface); padding: 15px 25px; border-top: 1px solid rgba(203, 161, 85, 0.2); display: flex; justify-content: space-between; gap: 15px; position: absolute; bottom: 0; left: 0; right: 0; border-radius: 0 0 24px 24px; }
+        .btn-back { background: transparent; color: var(--text-ivory); border: 1px solid var(--gold-rich); padding: 14px 25px; border-radius: 12px; font-weight: 700; cursor: pointer; flex: 1; }
+        .btn-next, .btn-pay-intent { background: var(--gold-liquid); color: #080B10; border: none; padding: 14px 30px; border-radius: 12px; font-weight: 800; cursor: pointer; flex: 1.5; text-transform: uppercase; letter-spacing: 1px; width:100%; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .success-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 4000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+        .success-content { background: var(--bg-surface); width: 100%; max-width: 400px; border-radius: 24px; padding: 35px 25px; text-align: center; border: 2px solid var(--gold-rich); }
+        .success-icon { font-size: 4rem; margin-bottom: 15px; display: block; }
+        .success-title { font-family: 'Cinzel Decorative', cursive; font-size: 1.5rem; color: var(--gold-rich); margin-bottom: 10px; }
+        .order-id { background: rgba(203, 161, 85, 0.1); padding: 15px; border-radius: 12px; font-weight: 700; color: var(--gold-light); margin-bottom: 25px; border: 1px dashed var(--gold-rich); }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Colaba Admin HQ</h1>
-        <div class="tab-container">
-            <button class="tab-btn active" onclick="switchTab('products')">📦 Products</button>
-            <button class="tab-btn" onclick="switchTab('pending')">🟡 Pending</button>
-            <button class="tab-btn" onclick="switchTab('confirmed')">🟢 Confirmed</button>
+    <header class="header">
+        <div class="brand">Colaba Store</div>
+        <a href="https://wa.me/917028808916">💬</a>
+    </header>
+
+    <div class="banner-container">
+        <div class="banner">
+            <div class="banner-box">
+                <h2>The Royal Collection</h2>
+                <p>Timeless Elegance</p>
+            </div>
         </div>
     </div>
 
-    <div id="products-tab" class="section active">
-        <div class="card-box">
-            <h2 style="margin-top:0; color:var(--gold-light);">Add New Product</h2>
-            <form id="addForm" onsubmit="addProduct(event)">
-                <div class="form-group"><label>Product Name</label><input type="text" id="pName" required></div>
-                <div style="display:flex; gap:10px;">
-                    <div class="form-group" style="flex:1;"><label>Current Price (₹)</label><input type="number" id="pPrice" required></div>
-                    <div class="form-group" style="flex:1;"><label>Old Price (₹)</label><input type="number" id="pOld"></div>
-                </div>
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="pCat" required>
-                        <option value="shoes">Shoes</option>
-                        <option value="mens">Mens</option>
-                        <option value="ladies">Ladies</option>
-                        <option value="watch">Watches</option>
-                        <option value="gadget">Gadgets</option>
-                        <option value="fashion">Fashion</option>
-                    </select>
+    <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search for luxury items...">
+    </div>
+
+    <div class="cat-scroll">
+        <div class="chip active" onclick="filterCat('all', this)">All Items</div>
+        <div class="chip" onclick="filterCat('shoes', this)">Shoes</div>
+        <div class="chip" onclick="filterCat('mens', this)">Mens</div>
+        <div class="chip" onclick="filterCat('ladies', this)">Ladies</div>
+        <div class="chip" onclick="filterCat('watch', this)">Watches</div>
+        <div class="chip" onclick="filterCat('gadget', this)">Gadgets</div>
+        <div class="chip" onclick="filterCat('fashion', this)">Fashion</div>
+    </div>
+
+    <div class="grid" id="productGrid">
+        <div style="color:var(--gold-rich); width:200%; padding:40px; text-align:center;">Loading Collection...</div>
+    </div>
+
+    <footer class="footer">
+        <div class="f-brand">The Colaba Store</div>
+        <p style="color:var(--text-gold-mute); font-size:13px; margin-bottom:20px;">
+            Purveyors of fine goods and premium technology. <br>Based in the heart of Nagpur.
+        </p>
+
+        <div class="contact-box">
+            <div style="font-size:11px; color:var(--gold-rich); margin-bottom:10px; text-transform:uppercase;">Visit Us</div>
+            <div style="color:var(--text-ivory); font-size:13px; margin-bottom:5px;">Shop No 4 , Regal Celebration Building, Medplus Opposite, Kanji House Road , Rani Durgawati Square Nagpur 440017</div>
+            <div style="color:var(--text-ivory); font-size:13px;">+91 70288 08916</div>
+        </div>
+        <div style="color:var(--gold-dark); font-size:11px;">EST. 2026 • COLABA STORE</div>
+    </footer>
+
+    <div class="bottom-bar" id="bottomBar" onclick="openCart()">
+        <div style="color:var(--text-ivory); font-weight:700;"><span id="totalCount" style="color:var(--gold-rich);">0</span> Items • <span id="totalPrice" style="color:var(--gold-rich);">₹0</span></div>
+        <div class="view-cart-btn">VIEW BAG</div>
+    </div>
+
+    <div class="modal-overlay" id="overlay" onclick="closeCart()"></div>
+    <div class="drawer" id="cartDrawer">
+        <div class="drawer-title" style="font-family:'Cinzel Decorative'; font-size:24px; color:var(--gold-rich); margin-bottom:20px;">Shopping Bag</div>
+        <div id="cartListHTML"></div>
+        <button id="checkoutBtn" class="wa-checkout" onclick="initiateCheckout()" style="display:none;">Proceed to Checkout</button>
+        <div style="text-align:center; margin-top:15px; color:var(--text-gold-mute); font-size:12px; cursor:pointer;" onclick="closeCart()">Close</div>
+    </div>
+
+    <div id="checkoutModal" class="checkout-overlay">
+        <div class="checkout-container" onclick="event.stopPropagation()">
+            <div class="checkout-header">
+                <h2 class="checkout-title">Secure Checkout</h2>
+                <button class="checkout-close" onclick="closeCheckoutModal()">×</button>
+            </div>
+            
+            <form id="checkoutForm" onsubmit="return false;" class="checkout-body">
+                <div class="checkout-step active" id="step1">
+                    <div class="step-title"><span class="step-number">1</span> Delivery Details</div>
+                    <div class="form-group"><label class="form-label">Full Name *</label><input type="text" class="form-input" id="fullName" required placeholder="Enter your full name"></div>
+                    <div class="form-group"><label class="form-label">Mobile Number *</label><input type="tel" class="form-input" id="mobileNumber" required placeholder="10-digit mobile number" pattern="[0-9]{10}"></div>
+                    <div class="address-grid">
+                        <div class="form-group"><label class="form-label">Pincode *</label><input type="tel" class="form-input" id="pincode" required placeholder="6-digit pincode" pattern="[0-9]{6}"></div>
+                        <div class="form-group"><label class="form-label">City *</label><input type="text" class="form-input" id="city" required placeholder="Your city"></div>
+                    </div>
+                    <div class="form-group"><label class="form-label">Full Address *</label><textarea class="form-input" id="fullAddress" required rows="2" placeholder="House no., Building, Street"></textarea></div>
                 </div>
                 
-                <div class="form-group">
-                    <label>Upload Product Image</label>
-                    <input type="file" id="pImgFile" accept="image/*" required>
+                <div class="checkout-step" id="step2">
+                    <div class="step-title"><span class="step-number">2</span> Payment Method</div>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" class="payment-radio" name="payment" id="upiRadio" value="upi" checked>
+                            <div class="payment-icon">⚡</div>
+                            <div>
+                                <div class="payment-title">Pay via QR Code</div>
+                                <div class="payment-desc">Scan & Pay using any UPI app</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="upi-details" id="upiDetails">
+                        <div class="upi-intent-box" style="padding: 20px 15px;">
+                            <div class="intent-msg">Pay <span id="intentAmountDisplay" style="color:var(--gold-light);">₹0</span></div>
+                            
+                            <div style="background: white; padding: 10px; border-radius: 12px; display: inline-block; margin: 15px 0;">
+                                <img src="qr.jpg" alt="Scan QR Code" style="width: 180px; height: 180px; object-fit: contain;">
+                            </div>
+                            
+                            <div style="font-size: 0.85rem; color: var(--text-gold-mute); line-height: 1.5; margin-bottom: 20px;">
+                                1. Take a screenshot of this QR<br>
+                                2. Open GPay / PhonePe / Paytm<br>
+                                3. Scan & Pay the exact amount
+                            </div>
+                            
+                            <div class="form-group" style="text-align: left;">
+                                <label class="form-label" style="color:var(--gold-light);">Upload Payment Screenshot *</label>
+                                <input type="file" class="form-input" id="cScreenshot" accept="image/*" style="padding:10px; background:rgba(203,161,85,0.1); border:1px dashed var(--gold-rich);">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="summary-title">Bill Details</div>
+                        <div class="summary-row"><span>Items Total</span><span id="summaryItemsTotal">₹0</span></div>
+                        <div class="summary-row"><span>Delivery Fee</span><span id="summaryDelivery">₹0</span></div>
+                        <div class="summary-row"><span>Total Payable</span><span id="summaryTotal">₹0</span></div>
+                    </div>
                 </div>
-
-                <button type="submit" class="btn-submit" id="addBtn">Add to Store</button>
             </form>
+
+            <div class="checkout-footer" id="footerStep1">
+                <button type="button" class="btn-back" onclick="closeCheckoutModal()">Close</button>
+                <button type="button" class="btn-next" onclick="goToStep(2)">Continue</button>
+            </div>
+            <div class="checkout-footer" id="footerStep2" style="display:none;">
+                <button type="button" class="btn-back" onclick="goToStep(1)">Back</button>
+                <button type="button" class="btn-next" id="finalSubmitBtn" onclick="submitFinalOrder()">Place Order ✅</button>
+            </div>
         </div>
-
-        <h3 style="color:var(--text-gold-mute);">Live Products</h3>
-        <div class="loader" id="prodLoader">Loading Products...</div>
-        <div class="list-grid" id="prodList"></div>
     </div>
-
-    <div id="pending-tab" class="section">
-        <button class="refresh-btn" onclick="loadOrders()">🔄 Refresh Pending Orders</button>
-        <div class="loader" id="pendingLoader">Loading Pending Orders...</div>
-        <div class="list-grid" id="pendingOrdList"></div>
-    </div>
-
-    <div id="confirmed-tab" class="section">
-        <button class="refresh-btn" onclick="loadOrders()">🔄 Refresh Confirmed Orders</button>
-        <div class="loader" id="confirmedLoader" style="display:none;">Loading Confirmed Orders...</div>
-        <div class="list-grid" id="confirmedOrdList"></div>
+    
+    <div id="successModal" class="success-modal">
+        <div class="success-content">
+            <span class="success-icon">👑</span>
+            <h2 class="success-title">Order Placed!</h2>
+            <p style="color:var(--text-ivory); margin-bottom:20px;">Your colaba order is confirmed and securely sent to our system.</p>
+            <div class="order-id">Order ID: <span id="orderIdTag"></span></div>
+            <button class="btn-next" onclick="closeSuccessModal()">Continue Shopping</button>
+        </div>
     </div>
 
     <script>
-        // Aapka link 
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwAsdtsRqLrdrRJuMu0n_vSogSN1oaiugsIK6UhMnSO1IpswNYjYkGvBx4MkmIqDpXJ/exec';
+        
+        let allProducts = [];
+        window.cart = {}; 
+        let orderData = {};
+        const myPhone = "917028808916";
 
-        // 3-Tabs ke liye naya Switch Function
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            
-            if(tab === 'products') {
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.getElementById('products-tab').classList.add('active');
-                loadProducts();
-            } else if (tab === 'pending') {
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.getElementById('pending-tab').classList.add('active');
-                loadOrders();
-            } else if (tab === 'confirmed') {
-                document.querySelectorAll('.tab-btn')[2].classList.add('active');
-                document.getElementById('confirmed-tab').classList.add('active');
-                loadOrders();
-            }
-        }
+        window.onload = function() {
+            fetchProducts();
+        };
 
-        window.onload = loadProducts;
-
-        function loadProducts() {
-            document.getElementById('prodLoader').style.display = 'block';
+        function fetchProducts() {
+            const grid = document.getElementById('productGrid');
             fetch(scriptURL)
             .then(r => r.json())
             .then(data => {
-                document.getElementById('prodLoader').style.display = 'none';
-                const list = document.getElementById('prodList');
-                list.innerHTML = '';
-                if(data.length === 0) return;
-                
-                data.reverse().forEach(p => {
-                    let safeImgUrl = p.Image || p.image || '';
-                    if(safeImgUrl && safeImgUrl.includes("id=")) {
-                        let fileId = safeImgUrl.split("id=")[1].split("&")[0];
-                        safeImgUrl = "https://drive.google.com/thumbnail?id=" + fileId + "&sz=w600";
-                    }
-
-                    list.innerHTML += `
-                        <div class="item-card">
-                            <div class="prod-header">
-                                <img src="${safeImgUrl}" class="prod-img" onerror="this.src='https://via.placeholder.com/60?text=Error'">
-                                <div>
-                                    <div style="font-weight:bold; font-size:16px;">${p.Name || p.name}</div>
-                                    <div style="color:var(--gold-rich); font-weight:bold;">₹${p.Price || p.price} <span style="font-size:12px; color:#888; text-decoration:line-through;">₹${p.OldPrice || p.oldPrice || ''}</span></div>
-                                </div>
-                            </div>
-                            <button class="btn-del" style="width:100%; padding:8px;" onclick="deleteProduct('${p.ID || p.id}')">🗑️ Delete Product</button>
-                        </div>
-                    `;
-                });
-            }).catch(e => {
-                document.getElementById('prodLoader').style.display = 'none';
+                grid.innerHTML = "";
+                if (data && data.length > 0) {
+                    allProducts = data.map(item => {
+                        let safeImgUrl = item.Image || item.image || '';
+                        if(safeImgUrl && safeImgUrl.includes("id=")) {
+                            let fileId = safeImgUrl.split("id=")[1].split("&")[0];
+                            safeImgUrl = "https://drive.google.com/thumbnail?id=" + fileId + "&sz=w600";
+                        }
+                        return {
+                            id: item.ID || item.id,
+                            name: item.Name || item.name,
+                            price: item.Price || item.price,
+                            originalPrice: item.OldPrice || item.oldPrice || item.originalPrice,
+                            category: item.Category || item.category,
+                            image: safeImgUrl
+                        };
+                    }).reverse();
+                    
+                    window.allProducts = allProducts;
+                    renderProducts(allProducts);
+                    
+                    restoreCheckoutSession();
+                } else {
+                    grid.innerHTML = "<p style='text-align:center; width:200%; color:var(--text-gold-mute);'>Collection is empty.</p>";
+                }
+            })
+            .catch(e => {
+                grid.innerHTML = "<p style='text-align:center; width:200%; color:var(--text-gold-mute);'>Failed to load collection.</p>";
             });
+        }
+
+        function restoreCheckoutSession() {
+            try {
+                const savedData = localStorage.getItem('colaba_checkout_session');
+                if (savedData) {
+                    const parsed = JSON.parse(savedData);
+                    if (parsed.cart && Object.keys(parsed.cart).length > 0) {
+                        window.cart = parsed.cart;
+                        updateTotal();
+                        
+                        if (parsed.address) {
+                            document.getElementById('fullName').value = parsed.address.name || '';
+                            document.getElementById('mobileNumber').value = parsed.address.mobile || '';
+                            document.getElementById('pincode').value = parsed.address.pincode || '';
+                            document.getElementById('city').value = parsed.address.city || '';
+                            document.getElementById('fullAddress').value = parsed.address.fullAddress || '';
+                            orderData.address = parsed.address;
+                        }
+                        
+                        initiateCheckout();
+                        document.getElementById('footerStep1').style.display = 'none'; 
+                        document.getElementById('footerStep2').style.display = 'flex';
+                        document.getElementById('step1').classList.remove('active'); 
+                        document.getElementById('step2').classList.add('active');
+                    }
+                }
+            } catch (e) {
+                console.log("Session restore error", e);
+            }
+        }
+
+        window.renderProducts = function(list) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = "";
+            list.forEach(p => {
+                let off = p.originalPrice > p.price ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0;
+                let qty = window.cart[p.id] || 0;
+                
+                let btnHTML = qty === 0 
+                    ? `<button class="btn-add" onclick="updateQty('${p.id}', 1)">ADD TO BAG</button>` 
+                    : `<div class="stepper">
+                        <button class="step-btn" onclick="updateQty('${p.id}', -1)">−</button>
+                        <span class="step-count">${qty}</span>
+                        <button class="step-btn" onclick="updateQty('${p.id}', 1)">+</button>
+                       </div>`;
+
+                grid.innerHTML += `
+                    <div class="card">
+                        ${off > 0 ? `<div class="badge-off">${off}% OFF</div>` : ''}
+                        <div class="img-box"><img src="${p.image}" onerror="this.src='https://via.placeholder.com/150'"></div>
+                        <div class="info">
+                            <div class="name">${p.name}</div>
+                            <div class="price-row">
+                                <span class="curr-price">₹${p.price}</span>
+                                ${off > 0 ? `<span class="old-price">₹${p.originalPrice}</span>` : ''}
+                            </div>
+                            <div id="btn-${p.id}">${btnHTML}</div>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function getCartDetails() {
+            let itemsTotal = 0;
+            let totalQty = 0;
+            Object.keys(window.cart).forEach(k => {
+                let p = window.allProducts.find(x => x.id == k);
+                if(p) {
+                    itemsTotal += p.price * window.cart[k];
+                    totalQty += window.cart[k];
+                }
+            });
+            
+            let deliveryFee = 0;
+            if (totalQty > 0) {
+                deliveryFee = 200 + ((totalQty - 1) * 75);
+            }
+            
+            return { itemsTotal, deliveryFee, grandTotal: itemsTotal + deliveryFee, totalQty };
+        }
+
+        window.updateQty = function(id, change) {
+            if(!window.cart[id]) window.cart[id] = 0;
+            window.cart[id] += change;
+            if(window.cart[id] <= 0) delete window.cart[id];
+            
+            let qty = window.cart[id] || 0;
+            let btnDiv = document.getElementById(`btn-${id}`);
+            if(btnDiv) {
+                btnDiv.innerHTML = qty === 0 
+                ? `<button class="btn-add" onclick="updateQty('${id}', 1)">ADD TO BAG</button>` 
+                : `<div class="stepper">
+                    <button class="step-btn" onclick="updateQty('${id}', -1)">−</button>
+                    <span class="step-count">${qty}</span>
+                    <button class="step-btn" onclick="updateQty('${id}', 1)">+</button>
+                   </div>`;
+            }
+            updateTotal();
+            if(document.getElementById('cartDrawer').classList.contains('open')) renderCartList();
+        }
+
+        function updateTotal() {
+            let details = getCartDetails();
+            document.getElementById('totalCount').innerText = details.totalQty;
+            document.getElementById('totalPrice').innerText = `₹${details.itemsTotal}`;
+            document.getElementById('bottomBar').style.display = details.totalQty > 0 ? 'flex' : 'none';
+        }
+
+        window.openCart = function() { renderCartList(); document.getElementById('overlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); }
+        window.closeCart = function() { document.getElementById('overlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); }
+
+        function renderCartList() {
+            let html = "";
+            let details = getCartDetails();
+            Object.keys(window.cart).forEach(k => {
+                let p = allProducts.find(x => x.id == k);
+                if(p) {
+                    html += `
+                    <div class="cart-list-item">
+                        <div>
+                            <div style="font-family:'Cinzel Decorative'; font-size:16px; color:var(--gold-light);">${p.name}</div>
+                            <div style="font-size:12px; color:#888;">₹${p.price} x ${window.cart[k]}</div>
+                        </div>
+                        <div class="stepper" style="width:100px; padding:2px; border-color:#444;">
+                            <button class="step-btn" onclick="updateQty('${k}', -1)">−</button>
+                            <span class="step-count">${window.cart[k]}</span>
+                            <button class="step-btn" onclick="updateQty('${k}', 1)">+</button>
+                        </div>
+                    </div>`;
+                }
+            });
+
+            if(details.totalQty > 0) {
+                html += `
+                <div style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px; border: 1px solid rgba(203, 161, 85, 0.2);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px; color:var(--text-ivory);">
+                        <span>Items Total</span>
+                        <span>₹${details.itemsTotal}</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:14px; color:var(--text-ivory);">
+                        <span>Delivery Fee</span>
+                        <span style="color:var(--gold-light);">+ ₹${details.deliveryFee}</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; font-size:16px; font-weight:bold; color:var(--gold-rich); margin-top:12px; border-top: 1px dashed rgba(203, 161, 85, 0.3); padding-top: 12px;">
+                        <span>Grand Total</span>
+                        <span>₹${details.grandTotal}</span>
+                    </div>
+                </div>`;
+            }
+
+            document.getElementById('cartListHTML').innerHTML = html || "<p style='color:var(--text-gold-mute); text-align:center;'>Your bag is empty.</p>";
+            let btn = document.getElementById('checkoutBtn');
+            if(details.totalQty > 0) { btn.style.display = 'block'; btn.innerText = `Proceed to Checkout (₹${details.grandTotal})`; } else { btn.style.display = 'none'; }
+        }
+
+        window.filterCat = function(c, b) {
+            document.querySelectorAll('.chip').forEach(x => x.classList.remove('active')); b.classList.add('active');
+            renderProducts(c === 'all' ? allProducts : allProducts.filter(x => x.category === c));
+        }
+        
+        document.getElementById('searchInput').addEventListener('keyup', e => {
+            let v = e.target.value.toLowerCase();
+            renderProducts(allProducts.filter(x => x.name.toLowerCase().includes(v)));
+        });
+
+        window.initiateCheckout = function() {
+            closeCart();
+            let details = getCartDetails();
+            document.getElementById('summaryItemsTotal').innerText = `₹${details.itemsTotal}`;
+            document.getElementById('summaryDelivery').innerText = `₹${details.deliveryFee}`;
+            document.getElementById('summaryTotal').innerText = `₹${details.grandTotal}`;
+            document.getElementById('intentAmountDisplay').innerText = `₹${details.grandTotal}`;
+            
+            document.getElementById('checkoutModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('step1').classList.add('active'); document.getElementById('step2').classList.remove('active');
+            document.getElementById('footerStep1').style.display = 'flex'; document.getElementById('footerStep2').style.display = 'none';
+        }
+
+        window.closeCheckoutModal = function() { document.getElementById('checkoutModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+
+        window.goToStep = function(step) {
+            if (step === 2) {
+                const name = document.getElementById('fullName').value.trim();
+                const mobile = document.getElementById('mobileNumber').value.trim();
+                const pincode = document.getElementById('pincode').value.trim();
+                const city = document.getElementById('city').value.trim();
+                const address = document.getElementById('fullAddress').value.trim();
+
+                if (!name || !mobile || !pincode || !city || !address) {
+                    alert("Please fill all delivery details correctly!");
+                    return;
+                }
+                
+                orderData.address = {
+                    name: name, mobile: mobile,
+                    pincode: pincode, city: city,
+                    fullAddress: address
+                };
+                
+                localStorage.setItem('colaba_checkout_session', JSON.stringify({
+                    cart: window.cart,
+                    address: orderData.address
+                }));
+
+                document.getElementById('footerStep1').style.display = 'none'; document.getElementById('footerStep2').style.display = 'flex';
+            } else {
+                document.getElementById('footerStep1').style.display = 'flex'; document.getElementById('footerStep2').style.display = 'none';
+            }
+            document.getElementById('step1').classList.remove('active'); document.getElementById('step2').classList.remove('active');
+            document.getElementById('step' + step).classList.add('active');
         }
 
         function compressImage(file, callback) {
@@ -178,7 +531,7 @@
                 img.src = event.target.result;
                 img.onload = function() {
                     const canvas = document.createElement('canvas');
-                    const MAX_WIDTH = 500; 
+                    const MAX_WIDTH = 500;
                     let scaleSize = MAX_WIDTH / img.width;
                     if(scaleSize > 1) scaleSize = 1; 
 
@@ -194,133 +547,69 @@
             }
         }
 
-        function addProduct(e) {
-            e.preventDefault();
-            const btn = document.getElementById('addBtn');
-            const fileInput = document.getElementById('pImgFile');
+        window.submitFinalOrder = function() {
+            const fileInput = document.getElementById('cScreenshot');
             const file = fileInput.files[0];
 
-            if (!file) { alert("Please select a photo!"); return; }
+            if(!file) { alert("Please upload the payment screenshot."); return; }
 
-            btn.innerText = "Uploading... Please wait ⏳"; 
+            const btn = document.getElementById('finalSubmitBtn');
+            const originalText = btn.innerText;
+            btn.innerText = "Processing Order... ⏳";
             btn.disabled = true;
+
+            const orderId = 'CS' + Date.now().toString().slice(-6);
+            document.getElementById('orderIdTag').innerText = orderId;
+            const addr = orderData.address;
+            const details = getCartDetails();
+            const utrText = "Screenshot Uploaded"; // Backend me error rokne ke liye
+
+            let itemsText = "";
+            Object.keys(window.cart).forEach(k => {
+                let p = window.allProducts.find(x => x.id == k);
+                if(p) itemsText += `[IMG:${p.image}] ${p.name} (x${window.cart[k]}) : ₹${p.price * window.cart[k]}\n`;
+            });
 
             compressImage(file, function(base64Data, mimeType) {
                 const payload = {
-                    action: 'addProduct',
-                    id: Date.now().toString(),
-                    name: document.getElementById('pName').value,
-                    price: document.getElementById('pPrice').value,
-                    oldPrice: document.getElementById('pOld').value || "",
-                    category: document.getElementById('pCat').value,
-                    imageBase64: base64Data,
-                    imageMimeType: mimeType
+                    action: 'placeOrder',
+                    orderId: orderId,
+                    name: addr.name,
+                    mobile: addr.mobile,
+                    pincode: addr.pincode,
+                    city: addr.city,
+                    address: addr.fullAddress,
+                    items: itemsText,
+                    itemsTotal: details.itemsTotal,
+                    deliveryFee: details.deliveryFee,
+                    grandTotal: details.grandTotal,
+                    utr: utrText,
+                    screenshotBase64: base64Data,
+                    screenshotMimeType: mimeType
                 };
 
                 fetch(scriptURL, { method: 'POST', body: JSON.stringify(payload) })
                 .then(r => r.json())
                 .then(res => {
                     if(res.status === 'success') {
-                        document.getElementById('addForm').reset();
-                        loadProducts();
-                        alert("Product Added Successfully! ✅");
-                    } else { alert("Error adding product"); }
-                    btn.innerText = "Add to Store"; 
-                    btn.disabled = false;
-                }).catch(() => {
-                    alert("Network error while uploading!");
-                    btn.innerText = "Add to Store"; 
-                    btn.disabled = false;
-                });
-            });
-        }
-
-        function deleteProduct(id) {
-            if(!confirm("Are you sure you want to delete this product?")) return;
-            fetch(scriptURL, { method: 'POST', body: JSON.stringify({action: 'deleteProduct', id: id}) })
-            .then(() => loadProducts());
-        }
-
-        function loadOrders() {
-            document.getElementById('pendingLoader').style.display = 'block';
-            fetch(scriptURL + '?action=getOrders')
-            .then(r => r.json())
-            .then(data => {
-                document.getElementById('pendingLoader').style.display = 'none';
-                
-                const pendingList = document.getElementById('pendingOrdList');
-                const confirmedList = document.getElementById('confirmedOrdList');
-                pendingList.innerHTML = ''; confirmedList.innerHTML = '';
-                
-                if(data.length === 0) {
-                    pendingList.innerHTML = "<p style='color:var(--text-gold-mute);'>No pending orders.</p>";
-                    confirmedList.innerHTML = "<p style='color:var(--text-gold-mute);'>No confirmed orders.</p>";
-                    return;
-                }
-
-                data.reverse().forEach(o => {
-                    let safeScreenshotUrl = o.Screenshot || '';
-                    if(safeScreenshotUrl && safeScreenshotUrl.includes("id=")) {
-                        let fileId = safeScreenshotUrl.split("id=")[1].split("&")[0];
-                        safeScreenshotUrl = "https://drive.google.com/thumbnail?id=" + fileId + "&sz=w800";
-                    }
-
-                    let screenshotBtn = safeScreenshotUrl ? `<a href="${safeScreenshotUrl}" target="_blank" class="ss-btn">🖼️ View Payment Screenshot</a>` : `<span style="color:var(--danger); font-size:12px;">No Screenshot Attached</span>`;
-                    
-                    // MAGIC FILTER: [IMG:url] to actual photo
-                    let formattedItems = o.Items ? o.Items.replace(/\[IMG:(.*?)\]/g, '<img src="$1" style="width:40px; height:40px; object-fit:cover; border-radius:4px; vertical-align:middle; margin-right:8px; border:1px solid var(--gold-rich);">').replace(/\\n/g, '<br><br>').replace(/\n/g, '<br><br>') : '';
-
-                    let html = `
-                        <div class="item-card">
-                            <div class="order-id">Order #${o.OrderID}</div>
-                            <div class="order-detail"><span>Date:</span> ${o.Date}</div>
-                            <div class="order-detail"><span>Customer:</span> ${o.Name} (${o.Mobile})</div>
-                            <div class="order-detail"><span>Address:</span> ${o.Address}, ${o.City} - ${o.Pincode}</div>
-                            <hr style="border:0; border-top:1px dashed #444; margin:10px 0;">
-                            <div class="order-detail" style="display:flex; flex-direction:column; gap:8px;"><span>Items:</span><br>${formattedItems}</div>
-                            <div class="order-detail" style="font-size:16px; font-weight:bold; color:var(--gold-rich); margin-top:5px;">Bill: ₹${o.GrandTotal}</div>
-                            <hr style="border:0; border-top:1px dashed #444; margin:10px 0;">
-                            <div class="order-detail"><span>UTR No:</span> <strong style="color:white;">${o.UTR || 'N/A'}</strong></div>
-                            ${screenshotBtn}
-                    `;
-
-                    if(o.Status === 'Pending') {
-                        html += `
-                            <div class="action-row">
-                                <button class="btn-del" onclick="deleteOrder('${o.OrderID}')">❌ Reject / Delete</button>
-                                <button class="btn-confirm" onclick="updateOrderStatus('${o.OrderID}', 'Confirmed')">✅ Confirm Order</button>
-                            </div>
-                        </div>`;
-                        pendingList.innerHTML += html;
+                        localStorage.removeItem('colaba_checkout_session');
+                        
+                        closeCheckoutModal();
+                        document.getElementById('successModal').style.display = 'flex';
                     } else {
-                        html += `
-                            <div class="action-row">
-                                <button class="btn-del" onclick="deleteOrder('${o.OrderID}')">🗑️ Delete Confirmed Order</button>
-                            </div>
-                        </div>`;
-                        confirmedList.innerHTML += html;
+                        alert("🚨 BACKEND ERROR: " + res.message); 
                     }
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }).catch((error) => {
+                    alert("🚨 NETWORK ERROR: " + error.message); 
+                    btn.innerText = originalText;
+                    btn.disabled = false;
                 });
-
-                if(pendingList.innerHTML === '') pendingList.innerHTML = "<p style='color:var(--text-gold-mute); text-align:center;'>No pending orders right now.</p>";
-                if(confirmedList.innerHTML === '') confirmedList.innerHTML = "<p style='color:var(--text-gold-mute); text-align:center;'>No confirmed orders right now.</p>";
-
-            }).catch(e => {
-                document.getElementById('pendingLoader').style.display = 'none';
             });
         }
 
-        function updateOrderStatus(orderId, status) {
-            if(!confirm("Are you sure you want to confirm this order?")) return;
-            fetch(scriptURL, { method: 'POST', body: JSON.stringify({action: 'updateOrderStatus', orderId: orderId, newStatus: status}) })
-            .then(() => loadOrders());
-        }
-
-        function deleteOrder(orderId) {
-            if(!confirm("Are you sure you want to DELETE this order?")) return;
-            fetch(scriptURL, { method: 'POST', body: JSON.stringify({action: 'deleteOrder', orderId: orderId}) })
-            .then(() => loadOrders());
-        }
+        window.closeSuccessModal = function() { document.getElementById('successModal').style.display = 'none'; window.cart = {}; updateTotal(); renderProducts(window.allProducts); }
     </script>
 </body>
 </html>
